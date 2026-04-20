@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget  {
       title: 'Busca clima',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
 
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
       home: WeatherHomeScreen(),
     );
