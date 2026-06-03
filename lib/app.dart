@@ -1,21 +1,26 @@
-
-import 'package:busca_clima2/features/weather/presentation/screans/weather_home_scream.dart';
+import 'package:busca_clima2/core/constants/app_strings.dart';
+import 'package:busca_clima2/core/constants/app_theme.dart';
+import 'package:busca_clima2/features/settings/presentation/providers/theme_notifier.dart';
+import 'package:busca_clima2/features/weather/presentation/screans/weather_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MyApp extends StatelessWidget  {
-
-  const MyApp ({super.key});
+class MyApp extends ConsumerWidget {
+  const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode =
+        ref.watch(themeProvider).asData?.value ?? ThemeMode.system;
     return MaterialApp(
-      title: 'Busca clima',
+      title: AppStrings.appTitle,
       debugShowCheckedModeBanner: false,
 
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: WeatherHomeScreen(),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+
+      themeMode: themeMode,
+      home: WeatherSplashScreen(),
     );
   }
 }

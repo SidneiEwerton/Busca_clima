@@ -33,7 +33,7 @@ final class WeatherNotifierProvider
   WeatherNotifier create() => WeatherNotifier();
 }
 
-String _$weatherNotifierHash() => r'55e748a43024163a47ce2356385aca50247cc79e';
+String _$weatherNotifierHash() => r'9adfd582c83e375623a1e278d46cc236c456d1fa';
 
 abstract class _$WeatherNotifier extends $AsyncNotifier<WeatherModel> {
   FutureOr<WeatherModel> build();

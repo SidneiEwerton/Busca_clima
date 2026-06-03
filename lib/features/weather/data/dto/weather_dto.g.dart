@@ -12,6 +12,11 @@ _WeatherDto _$WeatherDtoFromJson(Map<String, dynamic> json) => _WeatherDto(
       .map((e) => WeatherDescriptionDto.fromJson(e as Map<String, dynamic>))
       .toList(),
   name: json['name'] as String,
+  dt: (json['dt'] as num).toInt(),
+  sys: SysDto.fromJson(json['sys'] as Map<String, dynamic>),
+  wind: WindDto.fromJson(json['wind'] as Map<String, dynamic>),
+  uvIndex: (json['uvIndex'] as num?)?.toDouble(),
+  feelsLike: (json['feelsLike'] as num?)?.toDouble(),
 );
 
 Map<String, dynamic> _$WeatherDtoToJson(_WeatherDto instance) =>
@@ -19,6 +24,11 @@ Map<String, dynamic> _$WeatherDtoToJson(_WeatherDto instance) =>
       'main': instance.main,
       'weather': instance.weather,
       'name': instance.name,
+      'dt': instance.dt,
+      'sys': instance.sys,
+      'wind': instance.wind,
+      'uvIndex': instance.uvIndex,
+      'feelsLike': instance.feelsLike,
     };
 
 _MainDto _$MainDtoFromJson(Map<String, dynamic> json) => _MainDto(
@@ -46,3 +56,23 @@ Map<String, dynamic> _$WeatherDescriptionDtoToJson(
   'description': instance.description,
   'icon': instance.icon,
 };
+
+_SysDto _$SysDtoFromJson(Map<String, dynamic> json) =>
+    _SysDto(country: json['country'] as String);
+
+Map<String, dynamic> _$SysDtoToJson(_SysDto instance) => <String, dynamic>{
+  'country': instance.country,
+};
+
+_WindDto _$WindDtoFromJson(Map<String, dynamic> json) =>
+    _WindDto(speed: (json['speed'] as num).toDouble());
+
+Map<String, dynamic> _$WindDtoToJson(_WindDto instance) => <String, dynamic>{
+  'speed': instance.speed,
+};
+
+_UvIndexDto _$UvIndexDtoFromJson(Map<String, dynamic> json) =>
+    _UvIndexDto(uv: (json['uv'] as num).toDouble());
+
+Map<String, dynamic> _$UvIndexDtoToJson(_UvIndexDto instance) =>
+    <String, dynamic>{'uv': instance.uv};
