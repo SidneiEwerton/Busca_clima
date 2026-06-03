@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'package:busca_clima2/core/constants/app_colors.dart';
 import 'package:flutter/widgets.dart';
 
@@ -28,3 +29,35 @@ class AuroraHalo extends StatelessWidget {
     );
   }
 }
+=======
+import 'package:busca_clima2/core/constants/app_colors.dart';
+import 'package:flutter/widgets.dart';
+
+class AuroraHalo extends StatelessWidget {
+  final double size;
+  final Color color;
+  final int alpha;
+
+  const AuroraHalo({
+    super.key,
+    required this.size,
+    required this.color,
+    required this.alpha,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: RadialGradient(
+          colors: [color.withAlpha(alpha), AppColors.transparent],
+          stops: const [0.0, 1.0],
+        ),
+      ),
+    );
+  }
+}
+>>>>>>> 8f9e9b4ff38e1dba3a22217e58566c9b46c572be

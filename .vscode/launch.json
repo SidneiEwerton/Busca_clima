@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     // Use o IntelliSense para saber mais sobre os atributos possíveis.
     // Focalizar para exibir as descrições dos atributos existentes.
     // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
@@ -6,17 +7,34 @@
     "configurations": [
         {
             "name": "busca_clima2",
+=======
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Busca_clima",
+>>>>>>> 8f9e9b4ff38e1dba3a22217e58566c9b46c572be
             "request": "launch",
             "type": "dart"
         },
         {
+<<<<<<< HEAD
             "name": "busca_clima2 (profile mode)",
+=======
+            "name": "Busca_clima (profile mode)",
+>>>>>>> 8f9e9b4ff38e1dba3a22217e58566c9b46c572be
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
+<<<<<<< HEAD
             "name": "busca_clima2 (release mode)",
+=======
+            "name": "Busca_clima (release mode)",
+>>>>>>> 8f9e9b4ff38e1dba3a22217e58566c9b46c572be
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
