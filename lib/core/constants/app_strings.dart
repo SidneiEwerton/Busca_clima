@@ -39,6 +39,6 @@ abstract final class AppStrings {
   static const developerLabel = 'Programador';
   static const developerName = 'Ewerton.dev';
   static const developerEmail = 'ewerton.sidnei@gmail.com';
-  static const developerWebsite = 'https://ewerton.dev';
+  static const developerWebsite = 'https://ewertondev.com';
   static const versionLabel = 'Versão';
 }
