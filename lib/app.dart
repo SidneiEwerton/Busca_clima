@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import 'package:busca_clima2/core/constants/app_strings.dart';
 import 'package:busca_clima2/core/constants/app_theme.dart';
 import 'package:busca_clima2/features/settings/presentation/providers/theme_notifier.dart';
@@ -25,31 +24,3 @@ class MyApp extends ConsumerWidget {
     );
   }
 }
-=======
-import 'package:busca_clima2/core/constants/app_strings.dart';
-import 'package:busca_clima2/core/constants/app_theme.dart';
-import 'package:busca_clima2/features/settings/presentation/providers/theme_notifier.dart';
-import 'package:busca_clima2/features/weather/presentation/screans/weather_splash_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-class MyApp extends ConsumerWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final themeMode =
-        ref.watch(themeProvider).asData?.value ?? ThemeMode.system;
-    return MaterialApp(
-      title: AppStrings.appTitle,
-      debugShowCheckedModeBanner: false,
-
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-
-      themeMode: themeMode,
-      home: WeatherSplashScreen(),
-    );
-  }
-}
->>>>>>> 8f9e9b4ff38e1dba3a22217e58566c9b46c572be
