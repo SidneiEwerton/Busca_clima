@@ -1,4 +1,3 @@
-
 import 'package:busca_clima2/core/errors/failure.dart';
 import 'package:busca_clima2/features/weather/data/dto/geocoding_dto.dart';
 import 'package:busca_clima2/features/weather/data/repositories/geocoding_repository.dart';
@@ -15,12 +14,11 @@ GeocodingRepository geocodingRepository(Ref ref) {
   return GeocodingRepositoryImpl(dio);
 }
 
-
-
 class GeocodingRepositoryImpl implements GeocodingRepository {
   final Dio _dio;
 
   GeocodingRepositoryImpl(this._dio);
+
   @override
   Future<List<GeocodingModel>> fetchCityOptions(String cityName) async {
     try {
@@ -29,7 +27,6 @@ class GeocodingRepositoryImpl implements GeocodingRepository {
         queryParameters: {
           'q': cityName, 
           'limit': 5,
-         
         },
       );
 
@@ -44,16 +41,16 @@ class GeocodingRepositoryImpl implements GeocodingRepository {
           lon: dto.lon,
         );
       }).toList();
-    }
-    
-    on DioException catch (e) {
+    } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionTimeout ||
           e.type == DioExceptionType.receiveTimeout ||
           e.type == DioExceptionType.sendTimeout) {
         throw const TimeoutFailure();
-      
-    }
+      }
       if (e.response?.statusCode == 401) throw const ApiKeyInvalidFailure();
       throw const ServerFailure();
+    } catch (e) {
+      throw const ServerFailure();
+    }
   }
 }
