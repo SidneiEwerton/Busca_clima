@@ -1,7 +1,7 @@
-
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; 
+import 'package:intl/intl.dart';
+
 class DisplayDataHora extends StatefulWidget {
   const DisplayDataHora({Key? key}) : super(key: key);
 
@@ -19,18 +19,22 @@ class _DisplayDataHoraState extends State<DisplayDataHora> {
     super.initState();
     _atualizarTempo();
     // Atualiza o relógio a cada 1 segundo
-    _timer = Timer.periodic(const Duration(seconds: 1), (Timer t) => _atualizarTempo());
+    _timer = Timer.periodic(
+      const Duration(seconds: 1),
+      (Timer t) => _atualizarTempo(),
+    );
   }
 
   @override
   void dispose() {
-    _timer.cancel(); // Cancela o timer quando a tela fechar para evitar vazamento de memória
+    _timer
+        .cancel(); // Cancela o timer quando a tela fechar para evitar vazamento de memória
     super.dispose();
   }
 
   void _atualizarTempo() {
     final DateTime agora = DateTime.now();
-    
+
     // Formatos: 'dd/MM/yyyy' gera 27/05/2026 | 'HH:mm' gera 23:03
     final String data = DateFormat('dd/MM/yyyy', 'pt_BR').format(agora);
     final String hora = DateFormat('HH:mm:ss', 'pt_BR').format(agora);
@@ -52,7 +56,11 @@ class _DisplayDataHoraState extends State<DisplayDataHora> {
         const SizedBox(height: 4),
         Text(
           _horaFormatada,
-          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+          style: const TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
       ],
     );
