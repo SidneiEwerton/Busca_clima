@@ -1,4 +1,3 @@
-
 import 'package:busca_clima2/core/constants/app_strings.dart';
 import 'package:busca_clima2/features/settings/presentation/widgets/app_info_card.dart';
 import 'package:busca_clima2/features/settings/presentation/widgets/settings_app_header.dart';
@@ -18,7 +17,6 @@ class SettingsScreen extends StatelessWidget {
           SettingsAppHeader(),
           ThemeSelectorCard(),
           SizedBox(height: 16),
-          AppInfoCard(),
           
         ],
       ),
