@@ -33,7 +33,7 @@ class Weatherbackground extends StatelessWidget {
             ),
           ),
 
-          if (child != null) child!,
+          ?child,
         ],
       ),
     );

@@ -35,7 +35,7 @@ class CityDisabiguationSheet extends StatelessWidget {
           ListView.separated(
             shrinkWrap: true,
             itemCount: cities.length,
-            separatorBuilder: (_, __) => const Divider(color: Colors.white10),
+            separatorBuilder: (_, _) => const Divider(color: Colors.white10),
             itemBuilder: (context, index) {
               final city = cities[index];
               return ListTile(

@@ -18,8 +18,8 @@ class _AppInfoCardState extends State<AppInfoCard> {
   void initState() {
     super.initState();
     PackageInfo.fromPlatform().then((info) {
-      if (mounted)
-        setState(() => _version = '${info.version}+${info.buildNumber}');
+      if (mounted){
+        setState(() => _version = '${info.version}+${info.buildNumber}');}
     });
   }
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class DisplayDataHora extends StatefulWidget {
-  const DisplayDataHora({Key? key}) : super(key: key);
+  const DisplayDataHora({super.key});
 
   @override
   State<DisplayDataHora> createState() => _DisplayDataHoraState();
