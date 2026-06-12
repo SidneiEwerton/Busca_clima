@@ -1,5 +1,4 @@
-
-
+import 'package:busca_clima2/core/errors/failure.dart';
 import 'package:busca_clima2/features/weather/data/repositories/weather_repository_provider.dart';
 import 'package:busca_clima2/features/weather/domain/models/geocoding_model.dart';
 import 'package:busca_clima2/features/weather/domain/models/weather_model.dart';
@@ -25,11 +24,11 @@ class WeatherNotifier extends _$WeatherNotifier {
       final locations = await useCase.execute(cityName);
 
       if (locations.isEmpty) {
-        throw Exception('Cidade não encontrada');
+        throw const CityNotFoundException();
       }
 
       if (locations.length > 1) {
-        throw locations;
+        throw MultipleCitiesFailure(locations);
       }
 
       return await _fetchWeather(locations.first);
@@ -41,16 +40,11 @@ class WeatherNotifier extends _$WeatherNotifier {
 
   Future<void> selectLocation(GeocodingModel location) async {
     state = const AsyncLoading();
-    
+
     final newState = await AsyncValue.guard(() async {
-      try {
-        return await _fetchWeather(location);
-      } catch (e) {
-        
-        throw Exception('Erro ao processar os dados do clima: $e');
-      }
+      return await _fetchWeather(location);
     });
-    
+
     if (!ref.mounted) return;
     state = newState;
   }
@@ -63,7 +57,7 @@ class WeatherNotifier extends _$WeatherNotifier {
   Future<WeatherModel> _fetchWeatherByCityName(String cityName) async {
     final useCase = ref.read(searchCityUseCaseProvider);
     final locations = await useCase.execute(cityName);
-    if (locations.isEmpty) throw Exception('Cidade padrão não encontrada');
+    if (locations.isEmpty) throw const CityNotFoundException();
     return await _fetchWeather(locations.first);
   }
 }

@@ -1,3 +1,4 @@
+import 'package:busca_clima2/features/weather/domain/models/geocoding_model.dart';
 
 abstract class Failure implements Exception {
   final String message;
@@ -6,6 +7,11 @@ abstract class Failure implements Exception {
 
   @override
   String toString() => message;
+}
+
+class MultipleCitiesFailure extends Failure {
+  final List<GeocodingModel> cities;
+  const MultipleCitiesFailure(this.cities) : super('Múltiplas cidades encontradas');
 }
 
 class NetworkFailure extends Failure {

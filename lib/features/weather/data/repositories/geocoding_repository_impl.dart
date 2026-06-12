@@ -1,8 +1,9 @@
+import 'package:busca_clima2/core/constants/api_constants.dart';
 import 'package:busca_clima2/core/errors/failure.dart';
 import 'package:busca_clima2/features/weather/data/dto/geocoding_dto.dart';
 import 'package:busca_clima2/features/weather/data/repositories/geocoding_repository.dart';
 import 'package:busca_clima2/features/weather/domain/models/geocoding_model.dart';
-import 'package:busca_clima2/core/network/dio_client.dart'; 
+import 'package:busca_clima2/core/network/dio_client.dart';
 import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -23,10 +24,10 @@ class GeocodingRepositoryImpl implements GeocodingRepository {
   Future<List<GeocodingModel>> fetchCityOptions(String cityName) async {
     try {
       final response = await _dio.get(
-        'https://api.openweathermap.org/geo/1.0/direct', 
+        '${ApiConstants.geoBaseUrl}direct',
         queryParameters: {
-          'q': cityName, 
-          'limit': 5,
+          'q': cityName,
+          'limit': ApiConstants.geocodingLimit,
         },
       );
 

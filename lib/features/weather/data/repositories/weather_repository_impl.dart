@@ -3,7 +3,7 @@ import 'package:busca_clima2/core/errors/failure.dart';
 import 'package:busca_clima2/features/weather/data/dto/weather_dto.dart';
 import 'package:busca_clima2/features/weather/data/repositories/weather_repository.dart';
 import 'package:busca_clima2/features/weather/domain/models/weather_model.dart';
-import 'package:busca_clima2/features/weather/presentation/screans/widgets/daily_forecast.dart';
+import 'package:busca_clima2/features/weather/domain/models/daily_forecast.dart';
 import 'package:dio/dio.dart';
 
 class WeatherRepositoryImpl implements WeatherRepository {

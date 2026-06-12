@@ -1,6 +1,6 @@
 import 'package:busca_clima2/core/constants/app_colors.dart';
 import 'package:busca_clima2/core/constants/app_strings.dart';
-import 'package:busca_clima2/features/weather/data/repositories/geocoding_repository_impl.dart';
+import 'package:busca_clima2/core/errors/failure.dart';
 import 'package:busca_clima2/features/weather/presentation/providers/weather_notifier.dart';
 import 'package:busca_clima2/features/weather/presentation/screans/widgets/aurora_halo.dart';
 import 'package:busca_clima2/features/weather/presentation/screans/widgets/current_weather_card.dart';
@@ -9,11 +9,9 @@ import 'package:busca_clima2/shared/widgets/app_drawer.dart';
 import 'package:busca_clima2/shared/widgets/custom_snackbar.dart';
 import 'package:busca_clima2/shared/widgets/loading_overlay.dart';
 import 'package:busca_clima2/shared/widgets/weather_app_bar.dart';
-import 'package:busca_clima2/shared/widgets/custom_text_form_field.dart'; // Import do seu widget
-import 'package:dio/dio.dart';
+import 'package:busca_clima2/shared/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:busca_clima2/features/weather/domain/models/geocoding_model.dart';
 import 'package:busca_clima2/features/weather/domain/models/weather_model.dart';
 import 'package:busca_clima2/shared/widgets/city_disabiguation_sheet.dart';
 
@@ -39,9 +37,6 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
 
     final city = _cityEC.text.trim();
     if (city.isNotEmpty) {
-      Dio(BaseOptions(baseUrl: 'https://api.openweathermap.org/data/2.5/'));
-
-      ref.read(geocodingRepositoryProvider);
       ref.read(weatherProvider.notifier).search(city);
       FocusScope.of(context).unfocus();
     }
@@ -62,13 +57,13 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
     ref.listen<AsyncValue<WeatherModel>>(weatherProvider, (prev, next) {
       next.whenOrNull(
         error: (error, stack) {
-          if (error is List<GeocodingModel>) {
+          if (error is MultipleCitiesFailure) {
             showModalBottomSheet(
               context: context,
               isScrollControlled: true,
               backgroundColor: Colors.transparent,
               builder: (modalContext) => CityDisabiguationSheet(
-                cities: error,
+                cities: error.cities,
                 onSelect: (selectedCity) {
                   ref
                       .read(weatherProvider.notifier)
@@ -77,9 +72,7 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
               ),
             );
           } else {
-            final mensagemErro = error.toString().replaceAll('Exception: ', '');
-
-            CustomSnackbar.show(context, mensagemErro);
+            CustomSnackbar.show(context, error.toString());
           }
         },
       );
@@ -179,7 +172,7 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
                               ),
 
                               error: (err, stack) {
-                                if (err is List<GeocodingModel>) {
+                                if (err is MultipleCitiesFailure) {
                                   return Center(
                                     child: Padding(
                                       padding: const EdgeInsets.only(top: 40),
