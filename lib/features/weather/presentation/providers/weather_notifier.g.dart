@@ -39,7 +39,7 @@ abstract class _$WeatherNotifier extends $AsyncNotifier<WeatherModel> {
   FutureOr<WeatherModel> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<WeatherModel>, WeatherModel>;
     final element =
         ref.element
@@ -49,6 +49,6 @@ abstract class _$WeatherNotifier extends $AsyncNotifier<WeatherModel> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
