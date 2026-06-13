@@ -1,4 +1,5 @@
 import 'package:busca_clima2/core/constants/app_colors.dart';
+import 'package:busca_clima2/core/constants/app_strings.dart';
 import 'package:busca_clima2/features/weather/domain/models/weather_model.dart';
 import 'package:busca_clima2/features/weather/presentation/screans/widgets/displaydatahora.dart';
 import 'package:flutter/material.dart';
@@ -82,7 +83,7 @@ class WeatherDisplay extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      '${weather.humidity}% Umidade',
+                      '${weather.humidity}${AppStrings.humidityUnit} ${AppStrings.humidity}',
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 13,
@@ -94,7 +95,7 @@ class WeatherDisplay extends StatelessWidget {
                     const Icon(Icons.thermostat, color: Colors.blue, size: 20),
                     const SizedBox(height: 2),
                     Text(
-                      '${weather.feelsLike!.round()}°C Sensação',
+                      '${weather.feelsLike!.round()}${AppStrings.celsius} ${AppStrings.feelsLike}',
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 13,
@@ -113,7 +114,7 @@ class WeatherDisplay extends StatelessWidget {
                     const Icon(Icons.air, color: Colors.white, size: 20),
                     const SizedBox(height: 2),
                     Text(
-                      '${weather.windSpeed} m/s vento',
+                      '${weather.windSpeed} ${AppStrings.windUnit} ${AppStrings.wind}',
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 13,
@@ -125,7 +126,7 @@ class WeatherDisplay extends StatelessWidget {
                     const Icon(Icons.wb_sunny, color: Colors.yellow, size: 20),
                     const SizedBox(height: 2),
                     Text(
-                      '${weather.uvIndex!.round()} UV',
+                      '${weather.uvIndex!.round()} ${AppStrings.uvIndex}',
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 13,
@@ -143,7 +144,7 @@ class WeatherDisplay extends StatelessWidget {
         // --- MOVIDO: Agora a previsão dos dias fica na Column principal, ocupando toda a largura útil ---
         const SizedBox(height: 24),
         const Text(
-          'PREVISÃO PARA OS PRÓXIMOS DIAS',
+          AppStrings.forecastNextDays,
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
@@ -226,19 +227,19 @@ class WeatherDisplay extends StatelessWidget {
   String _formatarDiaSemana(DateTime date) {
     switch (date.weekday) {
       case DateTime.monday:
-        return 'Seg';
+        return AppStrings.weekdayMon;
       case DateTime.tuesday:
-        return 'Ter';
+        return AppStrings.weekdayTue;
       case DateTime.wednesday:
-        return 'Qua';
+        return AppStrings.weekdayWed;
       case DateTime.thursday:
-        return 'Qui';
+        return AppStrings.weekdayThu;
       case DateTime.friday:
-        return 'Sex';
+        return AppStrings.weekdayFri;
       case DateTime.saturday:
-        return 'Sáb';
+        return AppStrings.weekdaySat;
       case DateTime.sunday:
-        return 'Dom';
+        return AppStrings.weekdaySun;
       default:
         return '';
     }

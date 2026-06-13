@@ -1,3 +1,4 @@
+import 'package:busca_clima2/core/constants/app_strings.dart';
 import 'package:busca_clima2/features/weather/domain/models/geocoding_model.dart';
 
 abstract class Failure implements Exception {
@@ -11,29 +12,25 @@ abstract class Failure implements Exception {
 
 class MultipleCitiesFailure extends Failure {
   final List<GeocodingModel> cities;
-  const MultipleCitiesFailure(this.cities) : super('Múltiplas cidades encontradas');
+  const MultipleCitiesFailure(this.cities) : super(AppStrings.multipleCitiesFound);
 }
 
 class NetworkFailure extends Failure {
-  const NetworkFailure()
-    : super('Falha na conexão com a internet. Verifique a conexão');
+  const NetworkFailure() : super(AppStrings.networkError);
 }
 
 class CityNotFoundException extends Failure {
-  const CityNotFoundException()
-    : super('Cidade não encontrada. Verifique o nome ');
+  const CityNotFoundException() : super(AppStrings.cityNotFoundError);
 }
 
 class ApiKeyInvalidFailure extends Failure {
-  const ApiKeyInvalidFailure()
-    : super('Falha na autenticação com a API. Contate o suporte');
+  const ApiKeyInvalidFailure() : super(AppStrings.apiKeyInvalidError);
 }
 
 class ServerFailure extends Failure {
-  const ServerFailure() : super('Erro no servidor. Tente mais tarde');
+  const ServerFailure() : super(AppStrings.serverError);
 }
 
 class TimeoutFailure extends Failure {
-  const TimeoutFailure()
-    : super('Conexão lenta. Verifique sua internet e tente novamente.');
+  const TimeoutFailure() : super(AppStrings.timeoutError);
 }

@@ -7,8 +7,8 @@ abstract final class AppStrings {
   static const searchLabel = 'Digite uma cidade';
   static const searchEmptyError =
       'Digite o nome de uma cidade antes de buscar.';
-  static const mensageTime ='Sua previsao do tempo em segundos';
-
+  static const mensageTime = 'Sua previsao do tempo em segundos';
+  static const defaultSearchCity = 'Taubaté';
 
   static const unexpectedError = 'Ocorreu um erro inesperado. Tente novamente.';
   static const retryButton = 'Tentar novamente';
@@ -21,6 +21,11 @@ abstract final class AppStrings {
       'Cidade não encontrada. Verifique o nome e tente novamente.';
   static const apiKeyInvalidError =
       'Erro de autenticação com a API. Contate o suporte.';
+  static const multipleCitiesFound = 'Múltiplas cidades encontradas';
+  static const multipleCitiesSelectBelow =
+      'Múltiplas cidades encontradas.\nSelecione uma na lista abaixo.';
+  static const weatherCardRenderError =
+      'Erro ao renderizar o card de clima.\nVerifique se há valores nulos.';
 
   static const humidity = 'Umidade';
   static const wind = 'Vento';
@@ -28,8 +33,20 @@ abstract final class AppStrings {
   static const feelsLike = 'Sensação';
 
   static const celsius = '°C';
-  static const windUnit = 'km/h';
+  static const windUnit = 'm/s';
   static const humidityUnit = '%';
+
+  static const forecastNextDays = 'PREVISÃO PARA OS PRÓXIMOS DIAS';
+
+  static const weekdayMon = 'Seg';
+  static const weekdayTue = 'Ter';
+  static const weekdayWed = 'Qua';
+  static const weekdayThu = 'Qui';
+  static const weekdayFri = 'Sex';
+  static const weekdaySat = 'Sáb';
+  static const weekdaySun = 'Dom';
+
+  static const cityDisambiguationTitle = 'Qual cidade você deseja ?';
 
   static const settings = 'Configurações';
   static const themeLabel = 'Tema';

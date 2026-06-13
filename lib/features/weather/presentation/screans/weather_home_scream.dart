@@ -46,7 +46,7 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
     FocusScope.of(context).unfocus();
     final city = _cityEC.text.trim();
     if (city.isEmpty) {
-      ref.read(weatherProvider.notifier).search('Taubaté');
+      ref.read(weatherProvider.notifier).search(AppStrings.defaultSearchCity);
       return;
     }
     ref.read(weatherProvider.notifier).search(city);
@@ -156,7 +156,7 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
                                 } catch (e) {
                                   return Center(
                                     child: Text(
-                                      "Erro ao renderizar o card de clima.\nVerifique se há valores nulos.",
+                                      AppStrings.weatherCardRenderError,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         color: Colors.red.shade300,
@@ -184,7 +184,7 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
                                           ),
                                           const SizedBox(height: 16),
                                           Text(
-                                            "Múltiplas cidades encontradas.\nSelecione uma na lista abaixo.",
+                                            AppStrings.multipleCitiesSelectBelow,
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               color: Colors.white.withValues(

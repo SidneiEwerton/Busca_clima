@@ -1,4 +1,5 @@
 
+import 'package:busca_clima2/core/constants/app_strings.dart';
 import 'package:busca_clima2/features/weather/domain/models/geocoding_model.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ class CityDisabiguationSheet extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const Text(
-            'Qual cidade você deseja ?',
+            AppStrings.cityDisambiguationTitle,
             style: TextStyle(
               color: Colors.white,
               fontSize: 18,
