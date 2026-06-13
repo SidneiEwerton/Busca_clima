@@ -67,12 +67,12 @@ Resumo Detalhado da Fase 1 - Eliminar as violações que comprometem arquitetura
   ---
 *** RESUMO DA FASE 1 - O QUE FOI FEITO ***
 
-  - Move DailyForecast de presentation/widgets para domain/models e converte para @freezed
-  - Adiciona MultipleCitiesFailure em core/errors, substituindo o hack de throw locations
-  - Remove Exception genérico do WeatherNotifier; usa Failure tipada em todos os throws
-  - Remove instância de Dio e ref.read sem uso de weather_home_scream.dart
-  - Atualiza listener de erro para checar MultipleCitiesFailure ao invés de List<GeocodingModel>
-  - Adiciona geoBaseUrl e geocodingLimit em ApiConstants; remove hardcode do GeocodingRepositoryImpl
+  - Movi DailyForecast de presentation/widgets para domain/models e converte para @freezed
+  - Adicionei MultipleCitiesFailure em core/errors, substituindo o hack de throw locations
+  - Removi Exception genérico do WeatherNotifier; usa Failure tipada em todos os throws
+  - Removi instância de Dio e ref.read sem uso de weather_home_scream.dart
+  - Atualizei listener de erro para checar MultipleCitiesFailure ao invés de List<GeocodingModel>
+  - Adicionei geoBaseUrl e geocodingLimit em ApiConstants; remove hardcode do GeocodingRepositoryImpl
 
 
   ========================================================================================================================
