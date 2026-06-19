@@ -1,4 +1,5 @@
 
+import 'package:busca_clima2/features/settings/presentation/widgets/hourly_forecast.dart';
 import 'package:busca_clima2/features/weather/domain/models/daily_forecast.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'weather_model.freezed.dart';
@@ -18,6 +19,7 @@ const  factory  WeatherModel ({
     double? uvIndex, 
     required DateTime dateTime,  
     required List<DailyForecast> dailyForecasts,
+    required List<HourlyForecast> hourlyForecast,
 
   }) = _WeatherModel;
 }

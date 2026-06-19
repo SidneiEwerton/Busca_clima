@@ -4,6 +4,7 @@ import 'package:busca_clima2/core/errors/failure.dart';
 import 'package:busca_clima2/features/weather/presentation/providers/weather_notifier.dart';
 import 'package:busca_clima2/features/weather/presentation/screans/widgets/aurora_halo.dart';
 import 'package:busca_clima2/features/weather/presentation/screans/widgets/current_weather_card.dart';
+import 'package:busca_clima2/features/weather/presentation/screans/widgets/hourly_display.dart';
 import 'package:busca_clima2/features/weather/presentation/screans/widgets/weather_error_view.dart';
 import 'package:busca_clima2/shared/widgets/app_drawer.dart';
 import 'package:busca_clima2/shared/widgets/custom_snackbar.dart';
@@ -152,7 +153,12 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
                             child: weatherState.when(
                               data: (weather) {
                                 try {
-                                  return CurrentWeatherCard(weather: weather);
+                                  return Column(
+                                    children: [
+                                      CurrentWeatherCard(weather: weather),
+                                      
+                                    ],
+                                  );
                                 } catch (e) {
                                   return Center(
                                     child: Text(
@@ -165,6 +171,7 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
                                   );
                                 }
                               },
+                              
 
                               loading: () => const SizedBox(
                                 height: 200,
@@ -184,7 +191,8 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
                                           ),
                                           const SizedBox(height: 16),
                                           Text(
-                                            AppStrings.multipleCitiesSelectBelow,
+                                            AppStrings
+                                                .multipleCitiesSelectBelow,
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               color: Colors.white.withValues(
@@ -214,6 +222,7 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
           ),
         ],
       ),
+      
     );
   }
 }
