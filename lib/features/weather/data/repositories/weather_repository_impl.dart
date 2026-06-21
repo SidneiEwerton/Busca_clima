@@ -1,6 +1,6 @@
 import 'package:busca_clima2/core/network/connectivity_service.dart';
 import 'package:busca_clima2/core/errors/failure.dart';
-import 'package:busca_clima2/features/settings/presentation/widgets/hourly_forecast.dart';
+import 'package:busca_clima2/features/weather/domain/models/hourly_forecast.dart';
 import 'package:busca_clima2/features/weather/data/dto/weather_dto.dart';
 import 'package:busca_clima2/features/weather/data/repositories/weather_repository.dart';
 import 'package:busca_clima2/features/weather/domain/models/weather_model.dart';
@@ -35,7 +35,6 @@ class WeatherRepositoryImpl implements WeatherRepository {
       // 3. Filtra a lista gigante da API para extrair os dias
       final List<dynamic> forecastListRaw = responseForecast.data['list'];
       final diasFiltrados = _filtrarPrevisaoDiaria(forecastListRaw);
-      
 
       final horasFiltradas = _filtroPrevisaoHoraria(forecastListRaw);
       // 4. Junta tudo no modelo final
@@ -60,6 +59,7 @@ class WeatherRepositoryImpl implements WeatherRepository {
           'lang': 'pt_br',
         },
       );
+      
 
       // 2. Busca a previsão por coordenadas
       final responseForecast = await _dio.get(
@@ -92,11 +92,15 @@ class WeatherRepositoryImpl implements WeatherRepository {
   List<DailyForecast> _filtrarPrevisaoDiaria(List<dynamic> listaBruta) {
     List<DailyForecast> resultado = [];
 
+    List<int> diasProcessados = [];
+
     for (var item in listaBruta) {
       final DateTime dataHoraItem = DateTime.parse(item['dt_txt']);
 
-      // Filtra para pegar apenas o horário das 12:00
-      if (dataHoraItem.hour == 12) {
+      if (!diasProcessados.contains(dataHoraItem.day)) {
+        diasProcessados.add(dataHoraItem.day);
+        // Filtra para pegar apenas o horário das 12:00
+
         resultado.add(
           DailyForecast(
             date: dataHoraItem,
@@ -116,6 +120,7 @@ class WeatherRepositoryImpl implements WeatherRepository {
     WeatherDto dto,
     List<DailyForecast> forecasts,
     List<HourlyForecast> hourly,
+    
   ) {
     if (dto.weather.isEmpty) throw const CityNotFoundException();
 
@@ -137,7 +142,7 @@ class WeatherRepositoryImpl implements WeatherRepository {
   }
 
   List<HourlyForecast> _filtroPrevisaoHoraria(List<dynamic> listaBruta) {
-    final itensProximasHoras = listaBruta.take(4);
+    final itensProximasHoras = listaBruta.take(12);
 
     return itensProximasHoras.map((item) {
       return HourlyForecast(

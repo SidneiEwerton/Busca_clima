@@ -1,4 +1,3 @@
-
 import 'package:busca_clima2/core/constants/app_strings.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -18,8 +17,9 @@ class _AppInfoCardState extends State<AppInfoCard> {
   void initState() {
     super.initState();
     PackageInfo.fromPlatform().then((info) {
-      if (mounted){
-        setState(() => _version = '${info.version}+${info.buildNumber}');}
+      if (mounted) {
+        setState(() => _version = '${info.version}+${info.buildNumber}');
+      }
     });
   }
 

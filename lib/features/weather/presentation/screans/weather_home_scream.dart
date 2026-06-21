@@ -4,11 +4,12 @@ import 'package:busca_clima2/core/errors/failure.dart';
 import 'package:busca_clima2/features/weather/presentation/providers/weather_notifier.dart';
 import 'package:busca_clima2/features/weather/presentation/screans/widgets/aurora_halo.dart';
 import 'package:busca_clima2/features/weather/presentation/screans/widgets/current_weather_card.dart';
-import 'package:busca_clima2/features/weather/presentation/screans/widgets/hourly_display.dart';
+import 'package:busca_clima2/features/weather/presentation/screans/widgets/hourly_card.dart';
 import 'package:busca_clima2/features/weather/presentation/screans/widgets/weather_error_view.dart';
 import 'package:busca_clima2/shared/widgets/app_drawer.dart';
 import 'package:busca_clima2/shared/widgets/custom_snackbar.dart';
 import 'package:busca_clima2/shared/widgets/loading_overlay.dart';
+import 'package:busca_clima2/features/weather/presentation/screans/widgets/next_day_card.dart';
 import 'package:busca_clima2/shared/widgets/weather_app_bar.dart';
 import 'package:busca_clima2/shared/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
@@ -156,7 +157,18 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
                                   return Column(
                                     children: [
                                       CurrentWeatherCard(weather: weather),
-                                      
+                                      SizedBox(height: 16,),
+                                      NextDayCard(weather: weather),
+                                      SizedBox(height: 16),
+                                      Text(
+                                        'Proximas  horas   ',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w300,
+                                          color: AppColors.white90,
+                                        ),
+                                      ),
+                                      HourlyCard(weather: weather),
+
                                     ],
                                   );
                                 } catch (e) {
@@ -171,7 +183,6 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
                                   );
                                 }
                               },
-                              
 
                               loading: () => const SizedBox(
                                 height: 200,
@@ -222,7 +233,6 @@ class _WeatherHomeScreenState extends ConsumerState<WeatherHomeScreen> {
           ),
         ],
       ),
-      
     );
   }
 }
