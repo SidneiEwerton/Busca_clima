@@ -47,3 +47,4 @@ app.*.map.json
 lib/core/env/
 docs/melhoria_arquitetura.md
 docs\melhoria_arquitetura.md
+docs/gitpull/

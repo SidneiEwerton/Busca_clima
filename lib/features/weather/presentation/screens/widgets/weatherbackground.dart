@@ -1,5 +1,5 @@
-import 'package:busca_clima2/core/constants/app_colors.dart';
-import 'package:busca_clima2/features/weather/presentation/screans/widgets/aurora_halo.dart';
+﻿import 'package:busca_clima2/core/constants/app_colors.dart';
+import 'package:busca_clima2/features/weather/presentation/screens/widgets/aurora_halo.dart';
 import 'package:flutter/material.dart';
 
 class Weatherbackground extends StatelessWidget {

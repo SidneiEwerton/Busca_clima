@@ -1,12 +1,12 @@
-import 'package:busca_clima2/core/constants/app_colors.dart';
+﻿import 'package:busca_clima2/core/constants/app_colors.dart';
 import 'package:busca_clima2/features/weather/domain/models/weather_model.dart';
-import 'package:busca_clima2/features/weather/presentation/screans/widgets/hourly_display.dart';
+import 'package:busca_clima2/features/weather/presentation/screens/widgets/next_day.dart';
 import 'package:flutter/widgets.dart';
 
-class HourlyCard extends StatelessWidget {
+class NextDayCard extends StatelessWidget {
   final WeatherModel weather;
 
-  const HourlyCard({super.key, required this.weather});
+  const NextDayCard({super.key, required this.weather});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class HourlyCard extends StatelessWidget {
         border: Border.all(color: AppColors.white20),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-      child: HourlyDisplay(weather: weather),
-   );
+      child: NextDay(weather: weather), 
+    );
   }
 }

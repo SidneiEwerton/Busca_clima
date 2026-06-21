@@ -1,7 +1,7 @@
-import 'package:busca_clima2/core/constants/app_colors.dart';
+﻿import 'package:busca_clima2/core/constants/app_colors.dart';
 import 'package:busca_clima2/core/constants/app_strings.dart';
 import 'package:busca_clima2/features/weather/domain/models/weather_model.dart';
-import 'package:busca_clima2/features/weather/presentation/screans/widgets/displaydatahora.dart';
+import 'package:busca_clima2/features/weather/presentation/screens/widgets/displaydatahora.dart';
 import 'package:flutter/material.dart';
 
 class WeatherDisplay extends StatelessWidget {

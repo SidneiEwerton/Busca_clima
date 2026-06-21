@@ -1,7 +1,7 @@
-import 'package:busca_clima2/core/constants/app_colors.dart';
+﻿import 'package:busca_clima2/core/constants/app_colors.dart';
 import 'package:busca_clima2/core/constants/app_strings.dart';
-import 'package:busca_clima2/features/weather/presentation/screans/weather_home_scream.dart';
-import 'package:busca_clima2/features/weather/presentation/screans/widgets/weatherbackground.dart';
+import 'package:busca_clima2/features/weather/presentation/screens/weather_home_screen.dart';
+import 'package:busca_clima2/features/weather/presentation/screens/widgets/weatherbackground.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

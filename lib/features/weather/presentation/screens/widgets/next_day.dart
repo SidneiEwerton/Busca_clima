@@ -1,9 +1,7 @@
-
-
 import 'package:busca_clima2/core/constants/app_strings.dart';
+import 'package:busca_clima2/core/utils/date_formatter.dart';
 import 'package:busca_clima2/features/weather/domain/models/weather_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class NextDay extends StatelessWidget{
   final WeatherModel weather;
@@ -41,7 +39,7 @@ class NextDay extends StatelessWidget{
                     SizedBox(
                       width: 50,
                       child: Text(
-                        _formatarDiaSemana(day.date),
+                        day.date.diaSemanaAbreviado,
                         style: const TextStyle(
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
@@ -96,26 +94,5 @@ class NextDay extends StatelessWidget{
     ]));
   }
 
-  /// FUNÇÃO AUXILIAR: Transforma o número do weekday em texto amigável
-  String _formatarDiaSemana(DateTime date) {
-    switch (date.weekday) {
-      case DateTime.monday:
-        return AppStrings.weekdayMon;
-      case DateTime.tuesday:
-        return AppStrings.weekdayTue;
-      case DateTime.wednesday:
-        return AppStrings.weekdayWed;
-      case DateTime.thursday:
-        return AppStrings.weekdayThu;
-      case DateTime.friday:
-        return AppStrings.weekdayFri;
-      case DateTime.saturday:
-        return AppStrings.weekdaySat;
-      case DateTime.sunday:
-        return AppStrings.weekdaySun;
-      default:
-        return '';
-    }
-  }
 }
 

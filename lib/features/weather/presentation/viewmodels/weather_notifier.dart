@@ -17,34 +17,30 @@ class WeatherNotifier extends _$WeatherNotifier {
   }
 
   Future<void> search(String cityName) async {
-    state = const AsyncLoading();
-    
-    final newState = await AsyncValue.guard(() async {
+    await _runProtected(() async {
       final useCase = ref.read(searchCityUseCaseProvider);
       final locations = await useCase.execute(cityName);
-
-      if (locations.isEmpty) {
-        throw const CityNotFoundException();
-      }
-
-      if (locations.length > 1) {
-        throw MultipleCitiesFailure(locations);
-      }
-
-      return await _fetchWeather(locations.first);
+      if (locations.isEmpty) throw const CityNotFoundException();
+      if (locations.length > 1) throw MultipleCitiesFailure(locations);
+      return _fetchWeather(locations.first);
     });
-
-    if (!ref.mounted) return;
-    state = newState;
   }
 
   Future<void> selectLocation(GeocodingModel location) async {
+    await _runProtected(() => _fetchWeather(location));
+  }
+
+  Future<void> _runProtected(Future<WeatherModel> Function() action) async {
     state = const AsyncLoading();
-
     final newState = await AsyncValue.guard(() async {
-      return await _fetchWeather(location);
+      try {
+        return await action();
+      } on Failure {
+        rethrow;
+      } catch (_) {
+        throw const ServerFailure();
+      }
     });
-
     if (!ref.mounted) return;
     state = newState;
   }

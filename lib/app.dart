@@ -1,7 +1,7 @@
-import 'package:busca_clima2/core/constants/app_strings.dart';
+﻿import 'package:busca_clima2/core/constants/app_strings.dart';
 import 'package:busca_clima2/core/constants/app_theme.dart';
 import 'package:busca_clima2/features/settings/presentation/providers/theme_notifier.dart';
-import 'package:busca_clima2/features/weather/presentation/screans/weather_splash_screen.dart';
+import 'package:busca_clima2/features/weather/presentation/screens/weather_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
