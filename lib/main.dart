@@ -12,4 +12,5 @@ void main() async {
   await initializeDateFormatting('pt_BR', null);
 
   runApp(const ProviderScope(child: MyApp()));
+  
 }
